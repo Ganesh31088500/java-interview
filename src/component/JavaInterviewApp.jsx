@@ -1679,7 +1679,98 @@ const JavaInterviewApp = () => {
     "category": "Microservices",
     "question": "During a deployment, one microservice update breaks the system. How would you minimize impact in production?",
     "answer": "Use deployment strategies like Blue-Green Deployment or Canary Deployment to release the new version safely. Monitor service health during the rollout and rollback immediately if issues occur. Implement automated health checks and load balancer routing to redirect traffic to stable instances. Maintain backward-compatible APIs to avoid breaking clients."
+  },
+  {
+    "id": 301,
+    "category": "Java 8 Coding",
+    "question": "Write a Java 8 program to find the second highest number in a list.",
+    "answer": "List<Integer> list = Arrays.asList(10, 20, 35, 50, 50, 40);\nint secondHighest = list.stream()\n        .distinct()\n        .sorted(Comparator.reverseOrder())\n        .skip(1)\n        .findFirst()\n        .orElseThrow(() -> new RuntimeException(\"No second highest\"));\nSystem.out.println(secondHighest);"
+  },
+  {
+    "id": 302,
+    "category": "Java 8 Coding",
+    "question": "Write a Java 8 program to remove duplicates from a list.",
+    "answer": "List<Integer> list = Arrays.asList(10, 20, 20, 30, 40, 40);\nList<Integer> unique = list.stream()\n        .distinct()\n        .collect(Collectors.toList());\nSystem.out.println(unique);"
+  },
+  {
+    "id": 303,
+    "category": "Java 8 Coding",
+    "question": "Write a Java 8 program to find the frequency of each character in a string.",
+    "answer": "String str = \"banana\";\nMap<Character, Long> freq = str.chars()\n        .mapToObj(c -> (char) c)\n        .collect(Collectors.groupingBy(c -> c, Collectors.counting()));\nSystem.out.println(freq);"
+  },
+  {
+    "id": 304,
+    "category": "Java 8 Coding",
+    "question": "Find the first non-repeating character in a string using Java 8.",
+    "answer": "String str = \"swiss\";\nCharacter firstNonRepeat = str.chars()\n        .mapToObj(c -> (char) c)\n        .collect(Collectors.groupingBy(c -> c, LinkedHashMap::new, Collectors.counting()))\n        .entrySet()\n        .stream()\n        .filter(entry -> entry.getValue() == 1)\n        .map(Map.Entry::getKey)\n        .findFirst()\n        .orElse(null);\nSystem.out.println(firstNonRepeat);"
+  },
+  {
+    "id": 305,
+    "category": "Java 8 Coding",
+    "question": "Convert a list of strings to uppercase using Java 8 streams.",
+    "answer": "List<String> names = Arrays.asList(\"john\", \"mike\", \"smith\");\nList<String> upper = names.stream()\n        .map(String::toUpperCase)\n        .collect(Collectors.toList());\nSystem.out.println(upper);"
+  },
+  {
+    "id": 306,
+    "category": "Java 8 Coding",
+    "question": "Sort a list of employees by salary using Java 8.",
+    "answer": "List<Employee> employees = getEmployees();\nList<Employee> sorted = employees.stream()\n        .sorted(Comparator.comparing(Employee::getSalary))\n        .collect(Collectors.toList());"
+  },
+  {
+    "id": 307,
+    "category": "Java 8 Coding",
+    "question": "Find duplicate elements from a list using Java 8.",
+    "answer": "List<Integer> list = Arrays.asList(10, 20, 20, 30, 30, 40);\nSet<Integer> seen = new HashSet<>();\nList<Integer> duplicates = list.stream()\n        .filter(i -> !seen.add(i))\n        .collect(Collectors.toList());\nSystem.out.println(duplicates);"
+  },
+  {
+    "id": 308,
+    "category": "Java 8 Coding",
+    "question": "Join a list of strings using commas.",
+    "answer": "List<String> list = Arrays.asList(\"Java\", \"Spring\", \"Microservices\");\nString result = String.join(\", \", list);\nSystem.out.println(result);"
+  },
+  {
+    "id": 309,
+    "category": "Java 8 Coding",
+    "question": "Convert a list of objects to a map using Java 8.",
+    "answer": "Map<Integer, String> map = employees.stream()\n        .collect(Collectors.toMap(Employee::getId, Employee::getName));"
+  },
+  {
+    "id": 310,
+    "category": "Java 8 Coding",
+    "question": "Find the maximum value from a list using Java 8.",
+    "answer": "List<Integer> list = Arrays.asList(10, 50, 30);\nint max = list.stream()\n        .max(Integer::compareTo)\n        .orElseThrow();\nSystem.out.println(max);"
+  },
+  {
+    "id": 311,
+    "category": "Java 8 Coding",
+    "question": "Filter even numbers from a list using Java 8.",
+    "answer": "List<Integer> even = list.stream()\n        .filter(n -> n % 2 == 0)\n        .collect(Collectors.toList());"
+  },
+  {
+    "id": 312,
+    "category": "Java 8 Coding",
+    "question": "Find the sum of all numbers in a list using reduce().",
+    "answer": "int sum = list.stream()\n        .reduce(0, Integer::sum);\nSystem.out.println(sum);"
+  },
+  {
+    "id": 313,
+    "category": "Java 8 Coding",
+    "question": "Find the longest string from a list.",
+    "answer": "String longest = list.stream()\n        .max(Comparator.comparing(String::length))\n        .orElse(\"\");\nSystem.out.println(longest);"
+  },
+  {
+    "id": 314,
+    "category": "Java 8 Coding",
+    "question": "Write a parallel stream example to sum all integers.",
+    "answer": "int total = list.parallelStream()\n        .mapToInt(x -> x)\n        .sum();\nSystem.out.println(total);"
+  },
+  {
+    "id": 315,
+    "category": "Java 8 Coding",
+    "question": "Check if a string contains only digits using Java 8.",
+    "answer": "String str = \"12345\";\nboolean result = str.chars().allMatch(Character::isDigit);\nSystem.out.println(result);"
   }
+
 
 
 
