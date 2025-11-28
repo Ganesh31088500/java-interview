@@ -1769,7 +1769,129 @@ const JavaInterviewApp = () => {
     "category": "Java 8 Coding",
     "question": "Check if a string contains only digits using Java 8.",
     "answer": "String str = \"12345\";\nboolean result = str.chars().allMatch(Character::isDigit);\nSystem.out.println(result);"
+  },[
+  {
+    "id": 316,
+    "category": "Java 17",
+    "question": "What is Java 17 and why is it important?",
+    "answer": "Java 17 is a Long-Term Support (LTS) release of the Java platform, released in September 2021. LTS releases are supported for many years and are recommended for production systems. Java 17 bundles all improvements from Java 9 to 16, including modules, records, sealed classes, pattern matching for instanceof, text blocks, and enhanced garbage collectors. Many organizations plan migrations specifically to LTS versions like Java 11 and Java 17."
+  },
+  {
+    "id": 317,
+    "category": "Java 17",
+    "question": "What are the main language features added between Java 8 and Java 17?",
+    "answer": "Key language features introduced between Java 8 and Java 17 include: modules (Java 9), local-variable type inference with 'var' (Java 10), text blocks (Java 15), records (Java 16), pattern matching for 'instanceof' (Java 16), and sealed classes (Java 17). Switch expressions became standard in Java 14. Together these features improve code readability, conciseness, and safety."
+  },
+  {
+    "id": 318,
+    "category": "Java 17",
+    "question": "What is a record in Java 17?",
+    "answer": "A record is a special kind of class introduced to model immutable data as a transparent carrier for its state. When you declare a record, the compiler automatically generates a canonical constructor, private final fields, accessors, equals, hashCode, and toString. Records are declared using the 'record' keyword, for example: 'public record Point(int x, int y) {}'. They are ideal for DTOs, value objects, and simple data holders."
+  },
+  {
+    "id": 319,
+    "category": "Java 17",
+    "question": "When should you use a record instead of a class in Java 17?",
+    "answer": "Use a record when your type is mainly a data carrier whose identity is defined entirely by its state. The data is usually immutable, and you want generated implementations of equals, hashCode, and toString. If the type has complex behavior, mutable state, or inheritance requirements, a regular class or interface may be more appropriate. Records cannot extend other classes and are implicitly final."
+  },
+  {
+    "id": 320,
+    "category": "Java 17",
+    "question": "What are sealed classes and interfaces in Java 17?",
+    "answer": "Sealed classes and interfaces restrict which other classes or interfaces can extend or implement them. A sealed type uses the 'sealed' keyword and a 'permits' clause to list permitted subclasses. Those subclasses must be either final, non-sealed, or sealed themselves. This feature allows better control over inheritance hierarchies, supports exhaustive pattern matching, and improves maintainability and security."
+  },
+  {
+    "id": 321,
+    "category": "Java 17",
+    "question": "Explain pattern matching for 'instanceof' in Java 17.",
+    "answer": "Pattern matching for 'instanceof' lets you test a type and cast it in a single step. Instead of 'if (obj instanceof String) { String s = (String) obj; ... }', you can write 'if (obj instanceof String s) { ... }'. The variable 's' is automatically defined in the true branch, avoiding explicit casting. This makes code more concise and reduces the risk of ClassCastException."
+  },
+  {
+    "id": 322,
+    "category": "Java 17",
+    "question": "What are switch expressions, and how do they differ from traditional switch statements?",
+    "answer": "Switch expressions allow 'switch' to return a value, using the '->' syntax and 'yield'. Unlike traditional switch statements, switch expressions are exhaustive and do not require fall-through by default. For example: 'int result = switch (day) { case MONDAY, FRIDAY -> 6; default -> 8; };'. This leads to more concise and less error-prone branching logic."
+  },
+  {
+    "id": 323,
+    "category": "Java 17",
+    "question": "What are text blocks in Java and why are they useful?",
+    "answer": "Text blocks are multi-line string literals introduced to make it easier to represent large chunks of text like JSON, SQL, or HTML. They use triple quotes: 'String json = \"\"\"{\\n  \\\"key\\\": \\\"value\\\"\\n}\"\"\";'. Text blocks reduce the need for manual escaping and string concatenation, resulting in more readable and maintainable code."
+  },
+  {
+    "id": 324,
+    "category": "Java 17",
+    "question": "What are helpful NullPointerException messages and how do they help developers?",
+    "answer": "From Java 14 onwards, NullPointerException messages include more detailed information about which variable or expression was null. Instead of a generic 'NullPointerException', the message identifies the part of the line that evaluated to null. This greatly speeds up debugging, as developers can immediately see which dereference caused the issue in complex expressions."
+  },
+  {
+    "id": 325,
+    "category": "Java 17",
+    "question": "How does Java 17 handle access to JDK internal APIs?",
+    "answer": "Java 17 strongly encapsulates most JDK internal APIs by default. This means reflection-based access to internal packages is restricted unless explicitly opened using command-line options like '--add-opens'. Code that relied on 'sun.*' or other internal packages may break when migrating, so the recommended approach is to move to supported, public APIs."
+  },
+  {
+    "id": 326,
+    "category": "Java 17",
+    "question": "What garbage collectors are available in Java 17?",
+    "answer": "In Java 17, several garbage collectors are available: Serial GC, Parallel GC, G1 GC (the default), ZGC, and Shenandoah (depending on distribution). G1 is a server-style low-pause collector suitable for most applications. ZGC and Shenandoah are designed for very low pause times and large heaps. You can select a GC with JVM flags like '-XX:+UseG1GC' or '-XX:+UseZGC'."
+  },
+  {
+    "id": 327,
+    "category": "Java 17",
+    "question": "How do sealed classes work together with pattern matching?",
+    "answer": "Sealed classes restrict the set of subclasses, which allows the compiler to know all possible types in a hierarchy. This combines well with pattern matching in 'instanceof' and future pattern matching features in 'switch'. The compiler can check exhaustiveness, ensuring all permitted subclasses are handled. This results in safer and more maintainable polymorphic code."
+  },
+  {
+    "id": 328,
+    "category": "Java 17",
+    "question": "What are the key considerations when migrating from Java 8 to Java 17?",
+    "answer": "When migrating from Java 8 to 17, you must review: module system impact, encapsulation of internal APIs, removed or deprecated APIs, and third-party library compatibility. Build and deployment tools (Maven, Gradle, application servers) need to support Java 17. You can gradually migrate by first compiling and running on Java 17 without using new features, then incrementally adopting features like modules, records, and new GCs."
+  },
+  {
+    "id": 329,
+    "category": "Java 17",
+    "question": "Does pattern matching for 'instanceof' improve performance or just readability?",
+    "answer": "Pattern matching for 'instanceof' primarily improves readability and reduces boilerplate code by combining type checking and casting. In most cases, performance is similar to traditional 'instanceof' plus cast, because the JVM performs similar optimizations. The real benefit is cleaner and less error-prone code, which can indirectly lead to fewer bugs and easier maintenance."
+  },
+  {
+    "id": 330,
+    "category": "Java 17",
+    "question": "How can records and sealed classes be used together to model domain hierarchies?",
+    "answer": "You can define a sealed interface or abstract class and have its permitted implementations be records. For example, 'public sealed interface Shape permits Circle, Rectangle {}' and 'public record Circle(double radius) implements Shape {}'. This combination gives you immutable, data-focused types with a closed set of subtypes. It is similar to algebraic data types in functional languages and works well with pattern matching."
+  },
+  {
+    "id": 331,
+    "category": "Java 17",
+    "question": "What is the impact of strong encapsulation on frameworks that use reflection?",
+    "answer": "Frameworks that rely on reflection to access JDK internals or private members may fail under strong encapsulation. For example, libraries that used 'sun.misc.Unsafe' or accessed private fields of core classes can break. Many mainstream frameworks (like Spring and Hibernate) have been updated to avoid such access or use '--add-opens' where necessary. Application owners should run tests on Java 17 and adjust JVM options or upgrade dependencies."
+  },
+  {
+    "id": 332,
+    "category": "Java 17",
+    "question": "What changes related to the Security Manager are relevant in Java 17?",
+    "answer": "In Java 17, the Security Manager is deprecated for removal. Historically, it was used to enforce security policies at runtime, especially in applet and sandbox environments. As those use cases have largely disappeared and modern deployment models use other security mechanisms, the Security Manager is considered obsolete. New applications are encouraged not to rely on it."
+  },
+  {
+    "id": 333,
+    "category": "Java 17",
+    "question": "How does Java 17 support packaging and distribution of applications?",
+    "answer": "Java 17 supports tools like 'jlink' and 'jpackage' (introduced in earlier versions) to build custom runtime images and native installers. 'jlink' lets you create a minimized runtime that includes only the modules your app needs, reducing size and attack surface. 'jpackage' can produce platform-specific installers (such as .msi or .dmg), simplifying deployment to end users."
+  },
+  {
+    "id": 334,
+    "category": "Java 17",
+    "question": "What is the role of the module system in Java 17?",
+    "answer": "The module system, introduced in Java 9 and available in Java 17, organizes code into named modules with explicit dependencies. It improves encapsulation by allowing you to export only selected packages and hide internal APIs. The module system also enables tools like 'jlink' to build custom runtimes. While not mandatory for all applications, modularization is recommended for large code bases and library authors."
+  },
+  {
+    "id": 335,
+    "category": "Java 17",
+    "question": "How does Java 17 improve startup and performance compared to older versions?",
+    "answer": "Java 17 includes many performance improvements accumulated over releases: better JIT optimizations, enhanced G1 GC, optional low-latency GCs like ZGC and Shenandoah, and class-data sharing improvements. These changes reduce memory footprint, improve throughput, and lower pauses. In real-world benchmarks, Java 17 typically outperforms Java 8 and 11 for the same application, often without code changes."
   }
+]
+
 
 
 
